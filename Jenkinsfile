@@ -5,6 +5,10 @@ pipeline {
             steps {
                 script {
                     checkout scm
+		env.NODEJS_HOME = "${tool 'NodeJS'}"
+    // on linux / mac
+    env.PATH="${env.NODEJS_HOME}/bin:${env.PATH}"
+			sh "npm --version"
                     }
             }
         }
