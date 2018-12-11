@@ -33,16 +33,20 @@ pipeline {
 			parallel {
 				stage ('npm Install'){
 					steps {
-						script {
-							sh "npm install"
-							}
+						withNPM(npmrcConfig:'my-custom-npmrc') {
+            echo "Performing npm build..."
+            sh 'npm install'
+        }
 					}
 				}
 				stage('npm Start') {
 					steps {
 						script {
 							try {
-									sh "npm start"
+									withNPM(npmrcConfig:'my-custom-npmrc') {
+            echo "Performing npm build..."
+            sh 'npm install'
+        }
 									} catch (Exception err) {
 										currentBuild.result = 'FAILURE'
 										sh "exit 1"
