@@ -47,7 +47,7 @@ pipeline {
 					steps {
 						script {
 							try {
-									withNPM(npmrcConfig:'my-custom-npmrc') {
+									withNPM(npmrcConfig:'my-custom-nprc') {
             									echo "Performing npm version..."
             									sh 'npm --version'
         									}
@@ -65,7 +65,7 @@ pipeline {
 			steps {
 				script {
 					try {
-						withNPM(npmrcConfig:'my-custom-npmrc') {
+						withNPM(npmrcConfig:'my-custom-nprc') {
             								echo "Performing npm Start..."
             								sh 'npm start'
         								}
