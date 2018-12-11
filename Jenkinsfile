@@ -60,6 +60,7 @@ pipeline {
 								}
 							}
 						}
+					}
 		stage ('Npm Start') {
 			steps {
 				script {
@@ -79,5 +80,4 @@ pipeline {
 					}
 			
 				}
-			}		
-
+		
