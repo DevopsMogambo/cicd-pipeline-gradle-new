@@ -33,7 +33,7 @@ pipeline {
 			parallel {
 				stage ('npm Install'){
 					steps {
-						withNPM(npmrcConfig:'my-custom-npmrc') {
+						withNPM(npmrcConfig:'my-custom-nprc') {
             echo "Performing npm build..."
             sh 'npm install'
         }
