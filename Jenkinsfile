@@ -37,20 +37,18 @@ pipeline {
 			parallel {
 				stage ('npm Install'){
 					steps {
-						withNPM(npmrcConfig:'my-custom-nprc') {
-            						echo "Performing npm build..."
-            						sh 'npm install'
-        				       		}
+						echo "Performing npm build..."
+            					sh 'npm install'
+        				       	
 					}
 				}
 				stage('npm Version Check') {
 					steps {
 						script {
 							try {
-									withNPM(npmrcConfig:'my-custom-nprc') {
-            									echo "Performing npm version..."
-            									sh 'npm --version'
-        									}
+									echo "Performing npm version..."
+            								sh 'npm --version'
+        								
 									} catch (Exception err) {
 										currentBuild.result = 'FAILURE'
 										sh "exit 1"
@@ -61,23 +59,8 @@ pipeline {
 							}
 						}
 					}
-		stage ('Npm Start') {
-			steps {
-				script {
-					try {
-						withNPM(npmrcConfig:'my-custom-nprc') {
-            								echo "Performing npm Start..."
-            								sh 'npm start'
-        								}
-								} catch (Exception err) {
-									currentBuild.result = 'FAILURE'
-									sh "exit 1"
-								}
-							echo "RESULT: ${currentBuild.result}"
-								}
-							}
-						}
-					}
-			
+		
 				}
+			
+			}
 		
